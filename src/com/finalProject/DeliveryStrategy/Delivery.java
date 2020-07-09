@@ -7,8 +7,7 @@ import com.finalProject.Publications.Publication;
  */
 public abstract class Delivery {
 
-    public Publication publication;
-    public abstract void notifyToSubscriber();
+    public abstract void notifyToSubscriber(Publication publication);
 
 
 }

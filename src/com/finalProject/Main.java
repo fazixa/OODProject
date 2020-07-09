@@ -1,5 +1,7 @@
 package com.finalProject;
 
+import com.finalProject.DeliveryStrategy.CourierDelivery;
+import com.finalProject.DeliveryStrategy.OnlineDelivery;
 import com.finalProject.Publications.EconomicalPublication;
 import com.finalProject.Publications.PoliticalPublication;
 import com.finalProject.view.StarMark;
@@ -59,6 +61,114 @@ public class Main {
             case "removeStar":
                 if (views.contains("*")) views.remove("*");
                 break;
+            case "getEditingProgress":
+                switch (commandSplited[1]){
+                    case "\"sport\"":
+                        SportPublication sp = SportPublication.getInstance();
+                        sp.getEditingProgress();
+                        break;
+                    case "\"economical\"":
+                        EconomicalPublication ep=EconomicalPublication.getInstance();
+                        ep.getEditingProgress();
+                        break;
+                    case "\"political\"":
+                        PoliticalPublication pp = PoliticalPublication.getInstance();
+                        pp.getEditingProgress();
+                        break;
+                }
+                break;
+
+            case "getPrintingProgress":
+                switch (commandSplited[1]){
+                    case "\"sport\"":
+                        SportPublication sp = SportPublication.getInstance();
+                        sp.getPrintingProgress();
+                        break;
+                    case "\"economical\"":
+                        EconomicalPublication ep=EconomicalPublication.getInstance();
+                        ep.getPrintingProgress();
+                        break;
+                    case "\"political\"":
+                        PoliticalPublication pp = PoliticalPublication.getInstance();
+                        pp.getPrintingProgress();
+                        break;
+                }
+                break;
+
+            case "startPrinting":
+                switch (commandSplited[1]){
+                    case "\"sport\"":
+                        SportPublication sp = SportPublication.getInstance();
+                        sp.changeState("printing");
+                        break;
+                    case "\"economical\"":
+                        EconomicalPublication ep=EconomicalPublication.getInstance();
+                        ep.changeState("printing");
+                        break;
+                    case "\"political\"":
+                        PoliticalPublication pp = PoliticalPublication.getInstance();
+                        pp.changeState("printing");
+                        break;
+                }
+                break;
+
+
+            case "startPublishing":
+                switch (commandSplited[1]){
+                    case "\"sport\"":
+                        SportPublication sp = SportPublication.getInstance();
+                        sp.changeState("publishing");
+                        break;
+                    case "\"economical\"":
+                        EconomicalPublication ep=EconomicalPublication.getInstance();
+                        ep.changeState("publishing");
+                        break;
+                    case "\"political\"":
+                        PoliticalPublication pp = PoliticalPublication.getInstance();
+                        pp.changeState("publishing");
+                        break;
+                }
+                break;
+
+
+            case "publish":
+                switch (commandSplited[1]){
+                    case "\"sport\"":
+                        SportPublication sp = SportPublication.getInstance();
+                        sp.publish(commandSplited[2]);
+                        break;
+                    case "\"economical\"":
+                        EconomicalPublication ep=EconomicalPublication.getInstance();
+                        ep.publish(commandSplited[2]);
+                        break;
+                    case "\"political\"":
+                        PoliticalPublication pp = PoliticalPublication.getInstance();
+                        pp.publish(commandSplited[2]);
+                        break;
+                }
+                break;
+
+
+            case "setPublishingMethod":
+                switch (commandSplited[1]){
+                    case "\"sport\"":
+                        SportPublication sp = SportPublication.getInstance();
+                        if (commandSplited[2].equals("\"courier\"")) sp.setDelivery(CourierDelivery.getInstance());
+                        else sp.setDelivery(OnlineDelivery.getInstance());
+                        break;
+                    case "\"economical\"":
+                        EconomicalPublication ep=EconomicalPublication.getInstance();
+                        if (commandSplited[2].equals("\"courier\"")) ep.setDelivery(CourierDelivery.getInstance());
+                        else ep.setDelivery(OnlineDelivery.getInstance());
+                        break;
+                    case "\"political\"":
+                        PoliticalPublication pp = PoliticalPublication.getInstance();
+                        if (commandSplited[2].equals("\"courier\"")) pp.setDelivery(CourierDelivery.getInstance());
+                        else pp.setDelivery(OnlineDelivery.getInstance());
+                        break;
+                }
+                break;
+
 
 
             default: System.out.println("command not found");

@@ -3,6 +3,7 @@ package com.finalProject.Publications;
 import com.finalProject.DeliveryStrategy.CourierDelivery;
 import com.finalProject.DeliveryStrategy.Delivery;
 import com.finalProject.States.Editing;
+import com.finalProject.States.Publishing;
 import com.finalProject.States.State;
 import com.finalProject.SubscriberInfo;
 
@@ -25,8 +26,15 @@ public abstract class Publication implements TextView {
     protected ArrayList<SubscriberInfo> subscriberInfo = new ArrayList<>();
 
 
+
+
     public void setDelivery(Delivery delivery) {
         this.delivery = delivery;
+        String s = delivery.getClass().getName();
+        String c = this.getClass().getName();
+        s = s.substring(s.lastIndexOf('.') + 1);
+        c = c.substring(c.lastIndexOf('.') + 1);
+        System.out.println(c+"’s publishing method has been set to "+s);
     }
 
     public void setState(State state) {
@@ -52,26 +60,23 @@ public abstract class Publication implements TextView {
         return subscriberInfo.size();
     }
 
-    //////////////////////////////////////////observer/////////////////////////////////////////////////
-
-    public void notify(String message){
-        for (SubscriberInfo s : subscriberInfo) {
-            s.update(message);
-        }
-        System.out.println("Status Changing Ended!");
-        delivery.notifyToSubscriber();
-        System.out.println("End of Notifying!!!");
-
-
-    }
-    /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
-    //////////////////////////////////State Method/////////////////////////////////////////////////////////
+    //////////////////////////////////State Method And ObserverPattern/////////////////////////////////////////////////////////
 
     public void publish(String message){
-        state.publish(this,message);
+        if(this.state instanceof Publishing){
+            for (SubscriberInfo s : subscriberInfo) {
+                s.update(message);
+            }
+            System.out.println("Status Changing Ended!!!!");
+            delivery.notifyToSubscriber(this);
+            System.out.println("End of Notifying!!!");
+
+        }
+        else System.out.println("Wrong State!!");
+
     }
 
     public void changeState(String state){

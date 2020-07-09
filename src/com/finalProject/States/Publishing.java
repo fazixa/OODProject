@@ -20,12 +20,6 @@ public class Publishing extends State {
     }
 
     @Override
-    public void publish(Publication publication,String message){
-        publication.notify(message);
-    }
-
-
-    @Override
     public void changeState(String state,Publication pub){
         System.out.println("Wrong State!!");
     }

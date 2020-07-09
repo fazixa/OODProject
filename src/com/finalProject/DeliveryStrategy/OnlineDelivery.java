@@ -20,12 +20,10 @@ public class OnlineDelivery extends Delivery {
     }
 
     @Override
-    public void notifyToSubscriber() {
+    public void notifyToSubscriber(Publication publication) {
         for (SubscriberInfo s : publication.getSubscriberInfo()) {
             System.out.println("Online: We sent notif to Character "+s.getId());
         }
     }
-
-
 
 }
