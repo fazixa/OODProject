@@ -64,15 +64,15 @@ public class Main {
                 break;
             case "getEditingProgress":
                 switch (commandSplited[1]){
-                    case "\"sport\"":
+                    case "sport":
                         SportPublication sp = SportPublication.getInstance();
                         sp.getEditingProgress();
                         break;
-                    case "\"economical\"":
+                    case "economical":
                         EconomicalPublication ep=EconomicalPublication.getInstance();
                         ep.getEditingProgress();
                         break;
-                    case "\"political\"":
+                    case "political":
                         PoliticalPublication pp = PoliticalPublication.getInstance();
                         pp.getEditingProgress();
                         break;
@@ -81,15 +81,15 @@ public class Main {
 
             case "getPrintingProgress":
                 switch (commandSplited[1]){
-                    case "\"sport\"":
+                    case "sport":
                         SportPublication sp = SportPublication.getInstance();
                         sp.getPrintingProgress();
                         break;
-                    case "\"economical\"":
+                    case "economical":
                         EconomicalPublication ep=EconomicalPublication.getInstance();
                         ep.getPrintingProgress();
                         break;
-                    case "\"political\"":
+                    case "political":
                         PoliticalPublication pp = PoliticalPublication.getInstance();
                         pp.getPrintingProgress();
                         break;
@@ -98,15 +98,15 @@ public class Main {
 
             case "startPrinting":
                 switch (commandSplited[1]){
-                    case "\"sport\"":
+                    case "sport":
                         SportPublication sp = SportPublication.getInstance();
                         sp.changeState("printing");
                         break;
-                    case "\"economical\"":
+                    case "economical":
                         EconomicalPublication ep=EconomicalPublication.getInstance();
                         ep.changeState("printing");
                         break;
-                    case "\"political\"":
+                    case "political":
                         PoliticalPublication pp = PoliticalPublication.getInstance();
                         pp.changeState("printing");
                         break;
@@ -116,15 +116,15 @@ public class Main {
 
             case "startPublishing":
                 switch (commandSplited[1]){
-                    case "\"sport\"":
+                    case "sport":
                         SportPublication sp = SportPublication.getInstance();
                         sp.changeState("publishing");
                         break;
-                    case "\"economical\"":
+                    case "economical":
                         EconomicalPublication ep=EconomicalPublication.getInstance();
                         ep.changeState("publishing");
                         break;
-                    case "\"political\"":
+                    case "political":
                         PoliticalPublication pp = PoliticalPublication.getInstance();
                         pp.changeState("publishing");
                         break;
@@ -134,15 +134,15 @@ public class Main {
 
             case "publish":
                 switch (commandSplited[1]){
-                    case "\"sport\"":
+                    case "sport":
                         SportPublication sp = SportPublication.getInstance();
                         sp.publish(commandSplited[2]);
                         break;
-                    case "\"economical\"":
+                    case "economical":
                         EconomicalPublication ep=EconomicalPublication.getInstance();
                         ep.publish(commandSplited[2]);
                         break;
-                    case "\"political\"":
+                    case "political":
                         PoliticalPublication pp = PoliticalPublication.getInstance();
                         pp.publish(commandSplited[2]);
                         break;
@@ -152,17 +152,17 @@ public class Main {
 
             case "setPublishingMethod":
                 switch (commandSplited[1]){
-                    case "\"sport\"":
+                    case "sport":
                         SportPublication sp = SportPublication.getInstance();
                         if (commandSplited[2].equals("\"courier\"")) sp.setDelivery(CourierDelivery.getInstance());
                         else sp.setDelivery(OnlineDelivery.getInstance());
                         break;
-                    case "\"economical\"":
+                    case "economical":
                         EconomicalPublication ep=EconomicalPublication.getInstance();
                         if (commandSplited[2].equals("\"courier\"")) ep.setDelivery(CourierDelivery.getInstance());
                         else ep.setDelivery(OnlineDelivery.getInstance());
                         break;
-                    case "\"political\"":
+                    case "political":
                         PoliticalPublication pp = PoliticalPublication.getInstance();
                         if (commandSplited[2].equals("\"courier\"")) pp.setDelivery(CourierDelivery.getInstance());
                         else pp.setDelivery(OnlineDelivery.getInstance());
