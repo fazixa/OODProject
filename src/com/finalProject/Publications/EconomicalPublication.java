@@ -12,6 +12,7 @@ public class EconomicalPublication extends Publication{
         this.establishmentDate = new Date();
         this.head = "Economical Head";
         this.hashCode = (int)(Math.random() * 10000);
+
     }
 
     public static EconomicalPublication getInstance(){

@@ -7,11 +7,16 @@ public class PersonalInformation {
     private String name;
     private String gender;
     private String birth;
+    private int id;
 
-    public PersonalInformation(String name, String gender, String birth) {
+    public PersonalInformation(int id,String name, String gender, String birth) {
         this.name = name;
         this.gender = gender;
         this.birth = birth;
+        this.id=id;
+    }
+
+    public PersonalInformation() {
     }
 
     public String getName() {
@@ -26,7 +31,11 @@ public class PersonalInformation {
         return birth;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public String toString(){
-        return "Name: "+name+",Gender: "+gender+",birth: "+birth;
+        return "ID:"+id+"\nName:"+name+"\nGender:"+gender+"\nBirth:"+birth;
     }
 }

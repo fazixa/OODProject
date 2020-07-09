@@ -13,6 +13,7 @@ public class PoliticalPublication extends Publication {
         this.establishmentDate = new Date();
         this.head = "Political Head";
         this.hashCode = (int)(Math.random() * 10000);
+
     }
 
     public static PoliticalPublication getInstance(){
