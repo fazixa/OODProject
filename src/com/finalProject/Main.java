@@ -12,34 +12,42 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-
+    private static ArrayList<String> views = new ArrayList<>();
     private static void processCommand(String command){
         String[] commandSplited = command.split(" ");
-        System.out.println(commandSplited[0]);
-        ArrayList<String> views = new ArrayList<>();
 
         switch(commandSplited[0]){
             case "printInfo":
-            TextView pub = SportPublication.getInstance();
-                for(String s:views){
-                    if (s.equals("*")){
-                        pub=new StarMark(pub);
-                        System.out.println("starrrrrrrrr");
-                    }else
-                    if (s.equals("?")){
-                        pub=new QuestionMark(pub);
-                        System.out.println("QQQQQQQQQQQQ");
+                for (TextView pub: Database.getInstance().getPublicationList()){
+                    for(String s:views){
+                        if (s.equals("*")){
+                            pub=new StarMark(pub);
+
+                        }else
+                        if (s.equals("?")){
+                            pub=new QuestionMark(pub);
+                        }
                     }
+                    System.out.println(pub.toText());
                 }
-                System.out.println(pub.toText());
                 break;
 
             case "createModel":
+                switch (commandSplited[1]){
+                    case "sport":
+                        SportPublication.getInstance();
+                        break;
+                    case "economical":
+                        EconomicalPublication.getInstance();
+                        break;
+                    case "political":
+                        PoliticalPublication.getInstance();
+                        break;
+                }
                 break;
 
             case "addQ":
                 views.add("?");
-                System.out.println(views);
                 break;
             case "removeQ":
                 if (views.contains("?")) views.remove("?");
@@ -50,27 +58,11 @@ public class Main {
                 break;
             case "removeStar":
                 if (views.contains("*")) views.remove("*");
+                break;
 
 
             default: System.out.println("command not found");
-
         }
-
-
-//        // CREATE MODEL
-//        if(commandSplited[0].equals("createModel")){
-//            if(commandSplited[1].equals("\"sport\"")){
-//                SportPublication.getInstance();
-//            }else
-//            if(commandSplited[1].equals("\"Political\"")){
-//                PoliticalPublication.getInstance();
-//            }else
-//            if(commandSplited[1].equals("\"economical\"")){
-//                EconomicalPublication.getInstance();
-//            }
-//        }else
-//
-//
 
 
     }
