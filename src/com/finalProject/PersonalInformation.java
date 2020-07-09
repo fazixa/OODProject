@@ -9,14 +9,14 @@ public class PersonalInformation {
     private String birth;
     private int id;
 
-    public PersonalInformation(int id,String name, String gender, String birth) {
+    public PersonalInformation(String name, String gender, String birth) {
         this.name = name;
         this.gender = gender;
         this.birth = birth;
-        this.id=id;
     }
 
     public PersonalInformation() {
+
     }
 
     public String getName() {
@@ -35,7 +35,10 @@ public class PersonalInformation {
         return id;
     }
 
+    public void setId(int id) { this.id = id;}
+
     public String toString(){
-        return "ID:"+id+"\nName:"+name+"\nGender:"+gender+"\nBirth:"+birth;
+
+        return "Character "+ id+" has been created \nName:"+name+"\nGender:"+gender+"\nBirth:"+birth;
     }
 }

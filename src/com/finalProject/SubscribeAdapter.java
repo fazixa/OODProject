@@ -7,11 +7,12 @@ public class SubscribeAdapter implements InformationTarget{
     private SubscribeAdaptee subscribeAdaptee=new SubscribeAdaptee();
     private SubscriberInfo info;
     @Override
-    public void convertInformation(PersonalInformation information){
+    public SubscriberInfo convertInformation(PersonalInformation information){
         this.info=subscribeAdaptee.informationConverting(information);
+        return this.info;
     }
 
-    public SubscriberInfo getInfo() {
-        return info;
-    }
+//    public SubscriberInfo getInfo() {
+//        return info;
+//    }
 }

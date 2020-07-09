@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class Database {
     private ArrayList<Publication> publicationsList = new ArrayList<>();
+    private ArrayList<PersonalInformation> personalInfosList = new ArrayList<>();
     private static Database instance;
 
     private Database(){}
@@ -21,8 +22,24 @@ public class Database {
         publicationsList.add(pub);
     }
 
+    public void addPersonalInfo(PersonalInformation personalInfo){
+        personalInfosList.add(personalInfo);
+    }
+
+
     public ArrayList<Publication> getPublicationList(){
         return publicationsList;
     }
 
+    public int getIndexOfPersonalInfo(PersonalInformation personalInfo){
+        return personalInfosList.indexOf(personalInfo);
+    }
+
+    public PersonalInformation getPersonalInfoByIndex(int id){
+        return personalInfosList.get(id);
+    }
+
+    public ArrayList<PersonalInformation> getPersonalInfosList(){
+        return personalInfosList;
+    }
 }

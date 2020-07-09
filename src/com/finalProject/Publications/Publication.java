@@ -26,8 +26,6 @@ public abstract class Publication implements TextView {
     protected ArrayList<SubscriberInfo> subscriberInfo = new ArrayList<>();
 
 
-
-
     public void setDelivery(Delivery delivery) {
         this.delivery = delivery;
         String s = delivery.getClass().getName();
@@ -60,6 +58,16 @@ public abstract class Publication implements TextView {
         return subscriberInfo.size();
     }
 
+    public boolean subscriberExist(int id) {
+        for (SubscriberInfo s : subscriberInfo) {
+            if (s.getId() == id)
+                return true;
+        }
+        return false;
+    }
+
+
+    //////////////////////////////////////////observer/////////////////////////////////////////////////
 
 
 
@@ -92,7 +100,7 @@ public abstract class Publication implements TextView {
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    //TODO this method must be moved to decorator
+    //TODO convet these to tostring
     public String toText() {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         String formattedDate = formatter.format(this.establishmentDate);

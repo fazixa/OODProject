@@ -45,6 +45,7 @@ public class Main {
                     case "political":
                         PoliticalPublication.getInstance();
                         break;
+                    default: System.out.println("Publication not found");
                 }
                 break;
 
@@ -169,6 +170,42 @@ public class Main {
                 }
                 break;
 
+
+            case "createCharacter":
+                PersonalInformation PI = new PersonalInformation(commandSplited[1], commandSplited[2], commandSplited[3]);
+                Database.getInstance().addPersonalInfo(PI);
+                int id = Database.getInstance().getIndexOfPersonalInfo(PI);
+                PI.setId(id);
+                System.out.println(PI);
+                break;
+
+            case "subscribe":
+                switch (commandSplited[1]){
+                    case "sport":
+                        if(!SportPublication.getInstance().subscriberExist(Integer.parseInt(commandSplited[2])))
+                        {
+                            PersonalInformation PI2 = Database.getInstance().getPersonalInfoByIndex(Integer.parseInt(commandSplited[2]));
+                            //TODO
+                        }
+                        break;
+                    case "political":
+                        if(!PoliticalPublication.getInstance().subscriberExist(Integer.parseInt(commandSplited[2])))
+                        {
+                            PersonalInformation PI2 = Database.getInstance().getPersonalInfoByIndex(Integer.parseInt(commandSplited[2]));
+                            //TODO
+                        }
+                        break;
+                    case "economical":
+                        if(!EconomicalPublication.getInstance().subscriberExist(Integer.parseInt(commandSplited[2])))
+                        {
+                            PersonalInformation PI2 = Database.getInstance().getPersonalInfoByIndex(Integer.parseInt(commandSplited[2]));
+                            //TODO
+                        }
+                        break;
+                        default: System.out.println("Publication not found");
+                        //TODO handle id not found in database!
+                }
+                break;
 
 
             default: System.out.println("command not found");
