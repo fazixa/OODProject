@@ -5,14 +5,10 @@ package com.finalProject;
  */
 public class SubscribeAdapter implements InformationTarget{
     private SubscribeAdaptee subscribeAdaptee=new SubscribeAdaptee();
-    private SubscriberInfo info;
+
     @Override
     public SubscriberInfo convertInformation(PersonalInformation information){
-        this.info=subscribeAdaptee.informationConverting(information);
-        return this.info;
-    }
+        return subscribeAdaptee.informationConverting(information);
 
-//    public SubscriberInfo getInfo() {
-//        return info;
-//    }
+    }
 }

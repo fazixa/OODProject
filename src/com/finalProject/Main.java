@@ -185,21 +185,24 @@ public class Main {
                         if(!SportPublication.getInstance().subscriberExist(Integer.parseInt(commandSplited[2])))
                         {
                             PersonalInformation PI2 = Database.getInstance().getPersonalInfoByIndex(Integer.parseInt(commandSplited[2]));
-                            //TODO
+                            if(PI2!=null) SportPublication.getInstance().addSubscriberInfo(PI2);
+                            else System.out.println("Your ID is invalid");
                         }
                         break;
                     case "political":
                         if(!PoliticalPublication.getInstance().subscriberExist(Integer.parseInt(commandSplited[2])))
                         {
                             PersonalInformation PI2 = Database.getInstance().getPersonalInfoByIndex(Integer.parseInt(commandSplited[2]));
-                            //TODO
+                            if(PI2!=null) PoliticalPublication.getInstance().addSubscriberInfo(PI2);
+                            else System.out.println("Your ID is invalid");
                         }
                         break;
                     case "economical":
                         if(!EconomicalPublication.getInstance().subscriberExist(Integer.parseInt(commandSplited[2])))
                         {
                             PersonalInformation PI2 = Database.getInstance().getPersonalInfoByIndex(Integer.parseInt(commandSplited[2]));
-                            //TODO
+                            if(PI2!=null) EconomicalPublication.getInstance().addSubscriberInfo(PI2);
+                            else System.out.println("Your ID is invalid");
                         }
                         break;
                         default: System.out.println("Publication not found");

@@ -35,8 +35,10 @@ public class Database {
         return personalInfosList.indexOf(personalInfo);
     }
 
-    public PersonalInformation getPersonalInfoByIndex(int id){
-        return personalInfosList.get(id);
+    public PersonalInformation getPersonalInfoByIndex(int id) {
+        if (id < personalInfosList.size())
+            return personalInfosList.get(id);
+        else return null;
     }
 
     public ArrayList<PersonalInformation> getPersonalInfosList(){

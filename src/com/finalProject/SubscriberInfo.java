@@ -26,7 +26,7 @@ public class SubscriberInfo {
 
     public void update(String message){
         this.status=message;
-        System.out.println("Subscriber: "+id+"Status changed to:"+status);
+        System.out.println("SubscriberID:"+id+" Status changed to:"+status);
     }
 
 

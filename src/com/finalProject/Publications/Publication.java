@@ -2,9 +2,12 @@ package com.finalProject.Publications;
 
 import com.finalProject.DeliveryStrategy.CourierDelivery;
 import com.finalProject.DeliveryStrategy.Delivery;
+import com.finalProject.InformationTarget;
+import com.finalProject.PersonalInformation;
 import com.finalProject.States.Editing;
 import com.finalProject.States.Publishing;
 import com.finalProject.States.State;
+import com.finalProject.SubscribeAdapter;
 import com.finalProject.SubscriberInfo;
 
 
@@ -24,6 +27,7 @@ public abstract class Publication implements TextView {
     protected State state = Editing.getInstance();
     protected Delivery delivery = CourierDelivery.getInstance();
     protected ArrayList<SubscriberInfo> subscriberInfo = new ArrayList<>();
+    protected InformationTarget adapter = new SubscribeAdapter();
 
 
     public void setDelivery(Delivery delivery) {
@@ -47,12 +51,7 @@ public abstract class Publication implements TextView {
         return subscriberInfo;
     }
 
-    public void addSubscriberInfo(SubscriberInfo s){
-        if(subscriberInfo.contains(s)){
-            return;
-        }
-        subscriberInfo.add(s);
-    }
+
 
     public int getNumberOfSubscribersInfo(){
         return subscriberInfo.size();
@@ -67,21 +66,30 @@ public abstract class Publication implements TextView {
     }
 
 
-    //////////////////////////////////////////observer/////////////////////////////////////////////////
+    //////////////////////////////////////////Adapter Pattern/////////////////////////////////////////////////
 
+    public void addSubscriberInfo(PersonalInformation personalInformation) {
+        this.subscriberInfo.add(adapter.convertInformation(personalInformation));
+        for (SubscriberInfo s : subscriberInfo) {
+            System.out.println(s);
+        }
 
-
+    }
     //////////////////////////////////State Method And ObserverPattern/////////////////////////////////////////////////////////
 
     public void publish(String message){
-        if(this.state instanceof Publishing){
-            for (SubscriberInfo s : subscriberInfo) {
-                s.update(message);
-            }
-            System.out.println("Status Changing Ended!!!!");
-            delivery.notifyToSubscriber(this);
-            System.out.println("End of Notifying!!!");
+        if(this.state instanceof Publishing) {
+            if (subscriberInfo != null) {
+                for (SubscriberInfo s : subscriberInfo) {
+                    s.update(message);
+                }
+                System.out.println("Status Changing Ended!!");
+                System.out.println("*************************************");
+                delivery.notifyToSubscriber(this);
+                System.out.println("End of Notifying!!");
 
+            }
+            else System.out.println("This Publication doesn't have any Subscriber");
         }
         else System.out.println("Wrong State!!");
 

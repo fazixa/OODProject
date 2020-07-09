@@ -23,7 +23,7 @@ public class CourierDelivery extends Delivery {
     @Override
     public void notifyToSubscriber(Publication publication) {
             for (SubscriberInfo s : publication.getSubscriberInfo()) {
-                System.out.println("Courier: Character "+s.getId()+"got the notif");
+                System.out.println("Courier: Character "+s.getId()+" got the notif");
             }
         }
 
