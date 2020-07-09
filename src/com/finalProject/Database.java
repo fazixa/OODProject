@@ -21,8 +21,8 @@ public class Database {
         publicationsList.add(pub);
     }
 
-    public ArrayList getPublicationList(){
-     return publicationsList;
+    public ArrayList<Publication> getPublicationList(){
+        return publicationsList;
     }
 
 }
